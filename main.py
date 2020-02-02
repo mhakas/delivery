@@ -20,9 +20,14 @@ def bob():
 
 @app.route('/maggie')
 def mags():
-    """Return a friendly HTTP greeting."""
-    return 'Maggie made this'
+    """Return Maggie's own phrase."""
+    return 'Maggie made this!!'
 
+@app.route('/wikipedia/<company>')
+def wikipedia_route(company):
+    result = wikipedia.summary(company, sentences=10)
+    return result
 
+    
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
