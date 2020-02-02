@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import jsonify
 import wikipedia
+import pandas as pd
 
 
 app = Flask(__name__)
@@ -29,6 +30,11 @@ def mags():
 def wikipedia_route(company):
     result = wikipedia.summary(company, sentences=10)
     return result
+
+@app.route('/pandas')
+def pandas_sugar():
+    df = pd.read_csv("https://raw.githubusercontent.com/noahgift/sugar/master/data/education_sugar_cdc_2003.csv")
+    return jsonify(df.to_dict())
 
 
 if __name__ == '__main__':

@@ -3,3 +3,4 @@ pytest
 pylint
 pandas
 wikipedia
+gunicorn==19.9.0
